@@ -4,19 +4,18 @@ import Parent from './Parent.jsx';
 import Radios from './Radios.jsx';
 
 
+
 export default class Test extends Component {
     constructor(props) {
         super(props); 
+		this.state = {
+            repairPossible: 0	
+        };
         this.setRepair = this.setRepair.bind(this);
         this.setNoRepair = this.setNoRepair.bind(this);   
-        this.setMaybeRepair = this.setMaybeRepair.bind(this);
-		this.radioList = this.radioList.bind(this);
+        this.setMaybeRepair = this.setMaybeRepair.bind(this);							
     };
 	
-	radioList() { return [{radioNumber:0, radioText: "Ja", onClick: this.setRepair }, 
-							{radioNumber:1, radioText: "Nej", onClick: this.setNoRepair  }, 
-							{radioNumber:2, radioText: "Kanske", onClick: this.setMaybeRepair  }]
-	}
     setRepair() {
         this.setState({
             repairPossible : 0
@@ -36,9 +35,12 @@ export default class Test extends Component {
         });
         alert('set Maybe Repair');
     };
-    render() {
+    render() {var radioList = [{radioNumber:0, radioText: "Ja", onClick: this.setRepair }, 
+							{radioNumber:1, radioText: "Nej", onClick: this.setNoRepair  }, 
+							{radioNumber:2, radioText: "Kanske", onClick: this.setMaybeRepair  }]
+
         return <div><h1>Test of Radios</h1>
-				<Radios getRadios={this.radioList}/>
+				<Radios getRadios={radioList} repairPossible={this.state.repairPossible}/>
 				</div>;
     }
 
