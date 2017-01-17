@@ -9,40 +9,20 @@ import { Grid, Row, Col, Glyphicon, Button, ButtonGroup } from 'react-bootstrap'
 export default class Radios extends Component {
     constructor(props) {
 		super(props);
-		alert(this.props.getRadios);
 		this.state = {
-            repairPossible: 0,
-			radioData : [{radioNumber:0, radioText: "Ja", onClick: this.setRepair }, 
-							{radioNumber:1, radioText: "Nej", onClick: this.setNoRepair  }, 
-							{radioNumber:2, radioText: "Kanske", onClick: this.setMaybeRepair  }]	
-			
+            repairPossible: this.props.repairPossible,
+			radioData : []		
         };
-		this.setRepair = this.setRepair.bind(this);
-        this.setNoRepair = this.setNoRepair.bind(this);   
-        this.setMaybeRepair = this.setMaybeRepair.bind(this);
+
+	    this.props.getRadios.map(item =>  this.state.radioData.push(item));
 
 	};
 	
-	setRepair() {
-        this.setState({
-            repairPossible : 0
-        });
-        alert('set Repair');
-    };
-
-    setNoRepair() {
-        this.setState({
-            repairPossible : 1
-        });
-        alert('set No Repair');
-    };
-    setMaybeRepair() {
-        this.setState({
-            repairPossible : 2
-        });
-        alert('set Maybe Repair');
-    };
-
+	componentWillReceiveProps(newProps){
+		this.setState(
+			{repairPossible : newProps.repairPossible}
+		)
+	}
 	render() {
 		return <div>
 			<Row>
