@@ -10,7 +10,7 @@ export default class Radios extends Component {
     constructor(props) {
 		super(props);
 		this.state = {
-            repairPossible: this.props.repairPossible,
+            radioChecked: this.props.radioChecked,
 			radioData : []		
         };
 
@@ -20,20 +20,16 @@ export default class Radios extends Component {
 	
 	componentWillReceiveProps(newProps){
 		this.setState(
-			{repairPossible : newProps.repairPossible}
+			{radioChecked : newProps.radioChecked}
 		)
 	}
 	render() {
 		return <div>
 			<Row>
                  {this.state.radioData.map(item => 
-                    <Radio {...item} key={item.radioNumber} checked={this.state.repairPossible===item.radioNumber} onClick={item.onClick.bind(this)}  text = {item.radioText}/> )}              
+                     <Radio {...item} key={item.radioNumber} checked={this.state.radioChecked===item.radioNumber} onClick={item.onClick.bind(this)}  text = {item.radioText}  name={this.props.name}/> )}              
            </Row>
 		 </div>
 	}
-}
-Radios.propsTypes = 
-{
-	getRadios:React.PropTypes.array
 }
 

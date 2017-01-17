@@ -9,38 +9,38 @@ export default class Test extends Component {
     constructor(props) {
         super(props); 
 		this.state = {
-            repairPossible: 0	
+            radioChecked: 1	
         };
-        this.setRepair = this.setRepair.bind(this);
-        this.setNoRepair = this.setNoRepair.bind(this);   
-        this.setMaybeRepair = this.setMaybeRepair.bind(this);							
+        this.setRadio1 = this.setRadio1.bind(this);
+        this.setRadio2 = this.setRadio2.bind(this);   
+        this.setRadio3 = this.setRadio3.bind(this);							
     };
 	
-    setRepair() {
+    setRadio1() {
         this.setState({
-            repairPossible : 0
+            radioChecked : 0
         });
-        alert('set Repair');
+        alert('set Radio 1');
     };
 
-    setNoRepair() {
+    setRadio2() {
         this.setState({
-            repairPossible : 1
+            radioChecked : 1
         });
-        alert('set No Repair');
+        alert('set Radio 2');
     };
-    setMaybeRepair() {
+    setRadio3() {
         this.setState({
-            repairPossible : 2
+            radioChecked : 2
         });
-        alert('set Maybe Repair');
+        alert('set Radio 3');
     };
-    render() {var radioList = [{radioNumber:0, radioText: "Ja", onClick: this.setRepair }, 
-							{radioNumber:1, radioText: "Nej", onClick: this.setNoRepair  }, 
-							{radioNumber:2, radioText: "Kanske", onClick: this.setMaybeRepair  }]
+    render() {var radioList = [{radioNumber:0, radioText: " radio 1", onClick: this.setRadio1 }, 
+							{radioNumber:1, radioText: "radio 2", onClick: this.setRadio2  }, 
+							{radioNumber:2, radioText: "radio 3", onClick: this.setRadio3  }]
 
         return <div><h1>Test of Radios</h1>
-				<Radios getRadios={radioList} repairPossible={this.state.repairPossible}/>
+				<Radios getRadios={radioList} radioChecked={this.state.radioChecked} name={'rbRadio'}/>
 				</div>;
     }
 
