@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Test from './common/Test.jsx';
+import TestTable from './common/TestTable.jsx';
 
 
-ReactDOM.render(<Test/>, document.getElementById("react-app"));
+ReactDOM.render(<TestTable/>, document.getElementById("react-app"));

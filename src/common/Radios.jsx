@@ -13,7 +13,10 @@ export default class Radios extends Component {
             radioChecked: this.props.radioChecked,
 			radioData : []		
         };
-
+		
+        for (var i = 0; i < this.props.gridResultsSize; i++) { 
+            radioData.push(this.props.gridResults[i].caption);
+        }
 	    this.props.getRadios.map(item =>  this.state.radioData.push(item));
 
 	};
