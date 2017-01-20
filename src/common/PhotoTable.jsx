@@ -69,7 +69,7 @@ export default class PhotoTable extends Component {
     };
 
 
-    render(){ if (this.state.tableData.length===0) { return <div/>; }
+    render(){ if (this.state.tableData.length===0) { return <div><h2>Bilder saknas</h2></div>; }
         let rows = [];
         let self = this;
         for (var i = 0; i < self.state.height; i++){
@@ -78,10 +78,10 @@ export default class PhotoTable extends Component {
             for (var idx = 0; idx < self.state.width; idx++){
                 let cellID = `cell${i*2}-${idx}`
                 if (self.state.tableData[i*self.state.width + idx]!==undefined) {
-                    cell.push(<td style={{width:"12%", height:"20px"}}>{self.state.tableData[i*self.state.width + idx].createddate}</td>)
+                    cell.push(<td style={{borderLeft:"1px solid black", width:"15%", height:"20px"}}>{self.state.tableData[i*self.state.width + idx].createddate}</td>)
                     cell.push(<td style={{width:"20%", height:"20px"}}>{self.state.tableData[i*self.state.width + idx].createdname}</td>)
                     cell.push(<td style={{width:"15%", height:"20px"}}>{self.state.tableData[i*self.state.width + idx].caption}</td>)
-                    cell.push(<td><div><span className="grid-cell-clickable"><img src={self.state.tableData[i*self.state.width + idx].deleteimage.properties.src}  alt='' /></span></div></td>)  
+                    cell.push(<td><div><span className="grid-cell-clickable" ><img onClick={self.props.onclick} src={self.state.tableData[i*self.state.width + idx].deleteimage.properties.src}  alt={self.state.tableData[i*self.state.width + idx].id} /></span></div></td>)  
                 }
                 else
                 {
@@ -102,7 +102,7 @@ export default class PhotoTable extends Component {
                 }
                 else
                 {
-                    cell.push(<td colSpan={4} style={{border:"1px solid black"}} key={cellID} id={cellID}>Tom cell&nbsp;&nbsp;</td>);
+                    cell.push(<td colSpan={4} style={{border:"1px solid black"}} key={cellID} id={cellID}></td>);
                 }
             }
             rows.push(<tr key={i*2 + 1} id={rowID}>{cell}</tr>)
